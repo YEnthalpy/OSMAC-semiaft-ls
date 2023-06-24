@@ -1,3 +1,3 @@
-useDynLib(semiaftosmac4, .registration=TRUE)
+useDynLib(semiaftosmac, .registration=TRUE)
 importFrom(Rcpp, evalCpp)
 exportPattern("^[[:alpha:]]+")

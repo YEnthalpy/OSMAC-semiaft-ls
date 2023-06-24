@@ -1,11 +1,11 @@
-Package: semiaftosmac4
+Package: semiaftosmac
 Type: Package
-Title: What the package does (short line)
+Title: Optima Subsampling approach for semi-parametric AFT model under least square approach
 Version: 1.0
 Date: 2023-04-02
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line)
+Author: Zehan Yang
+Maintainer: Who to complain to <zehan.yang@uconn.edu>
+Description: Optima Subsampling approach for semi-parametric AFT model under least square approach
 License: What license is it under?
 Imports: Rcpp (>= 1.0.10)
 LinkingTo: Rcpp, RcppArmadillo

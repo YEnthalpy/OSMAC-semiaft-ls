@@ -117,10 +117,10 @@ semi_ls_ssp <- function(x, y, delta, r0, ssp_type, b, alpha) {
     }
     bt_pt <- mle_pt$coefficient
     g <- uls(x, y, delta, bt_pt, rep(1 / n, n), n, ind_pt)
-    if (ssp_type == "mVc") {
+    if (ssp_type == "optL") {
       g_nm <- sqrt(rowSums(g^2))
       ssp <- g_nm / sum(g_nm) * (1 - alpha) + alpha / n
-    } else if (ssp_type == "mMSE") {
+    } else if (ssp_type == "optA") {
       m_inv <- solve(resp(x_pt, y_pt, dt_pt, bt_pt, ssp_pt, n, b))
       m_mse <- sqrt(colSums((tcrossprod(m_inv, g))^2))
       ssp <- m_mse / sum(m_mse) * (1 - alpha) + alpha / n
@@ -136,14 +136,14 @@ semi_ls_fit <- function(x, y, delta, r0, r, ssp_type, method, se = TRUE, b = 20,
   n <- nrow(x)
   ssps <- semi_ls_ssp(x, y, delta, r0, ssp_type, b, alpha)
   pi <- ssps$ssp
-  if (method == "two.step") {
+  if (method == "one") {
     ind_pt <- ssps$index.pilot
     ind_r <- sample(n, r, prob = pi, replace = TRUE)
     ind <- c(ind_r, ind_pt)
     sec_ssp <- c(pi[ind_r], rep(1 / n, r0))
     est <- semi_ls_est(x[ind, ], y[ind], delta[ind], sec_ssp, n)
     if (est$converge != 0) {
-      return(list(coe = NA, std = NA, converge = est$converge, ite = NA))
+      return(list(coefficient = NA, std = NA, converge = est$converge, ite = NA))
     }
     coe <- as.vector(est$coefficient)
     ite <- est$ite
@@ -158,7 +158,7 @@ semi_ls_fit <- function(x, y, delta, r0, r, ssp_type, method, se = TRUE, b = 20,
     } else {
       std <- NA
     }
-  } else if (method == "iterative") {
+  } else if (method == "multiple") {
     out <- replicate(itr, expr = {
       ind <- sample(n, r, prob = pi, replace = TRUE)
       est <- list(semi_ls_est(x[ind, ], y[ind], delta[ind], pi[ind], n))
@@ -182,5 +182,5 @@ semi_ls_fit <- function(x, y, delta, r0, r, ssp_type, method, se = TRUE, b = 20,
       std <- NA
     }
   }
-  return(list(coe = coe, std = std, converge = 0, ite = ite))
+  return(list(coefficient = coe, std = std, converge = 0, ite = ite))
 }
