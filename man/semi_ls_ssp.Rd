@@ -47,7 +47,7 @@ coverge, the converging message of the pilot estimator.
 \examples{
 library(semiaftosmac)
 # Load the full data
-dat <- lymp
+data(lymp)
 x <- lymp$covariates
 y <- lymp$reponse
 delta <- lymp$delta

@@ -41,7 +41,7 @@ coverge, the converging message; ite, the number of itterations used.
 \examples{
 library(semiaftosmac)
 # Load the full data
-dat <- lymp
+data(lymp)
 x <- lymp$covariates
 y <- lymp$reponse
 delta <- lymp$delta
