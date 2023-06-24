@@ -2,14 +2,14 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 center <- function(M, w, N) {
-    .Call(`_semiaftosmac4_center`, M, w, N)
+    .Call(`_semiaftosmac_center`, M, w, N)
 }
 
 km <- function(e, d, p) {
-    .Call(`_semiaftosmac4_km`, e, d, p)
+    .Call(`_semiaftosmac_km`, e, d, p)
 }
 
 gehan_smth <- function(x, y, d, beta, p, n) {
-    .Call(`_semiaftosmac4_gehan_smth`, x, y, d, beta, p, n)
+    .Call(`_semiaftosmac_gehan_smth`, x, y, d, beta, p, n)
 }
 

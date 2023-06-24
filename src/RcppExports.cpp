@@ -13,7 +13,7 @@ Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 
 // center
 NumericMatrix center(NumericMatrix M, NumericVector w, int N);
-RcppExport SEXP _semiaftosmac4_center(SEXP MSEXP, SEXP wSEXP, SEXP NSEXP) {
+RcppExport SEXP _semiaftosmac_center(SEXP MSEXP, SEXP wSEXP, SEXP NSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -26,7 +26,7 @@ END_RCPP
 }
 // km
 List km(NumericVector e, NumericVector d, NumericVector p);
-RcppExport SEXP _semiaftosmac4_km(SEXP eSEXP, SEXP dSEXP, SEXP pSEXP) {
+RcppExport SEXP _semiaftosmac_km(SEXP eSEXP, SEXP dSEXP, SEXP pSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -39,7 +39,7 @@ END_RCPP
 }
 // gehan_smth
 arma::mat gehan_smth(arma::mat x, arma::vec y, arma::uvec d, arma::vec beta, arma::vec p, int n);
-RcppExport SEXP _semiaftosmac4_gehan_smth(SEXP xSEXP, SEXP ySEXP, SEXP dSEXP, SEXP betaSEXP, SEXP pSEXP, SEXP nSEXP) {
+RcppExport SEXP _semiaftosmac_gehan_smth(SEXP xSEXP, SEXP ySEXP, SEXP dSEXP, SEXP betaSEXP, SEXP pSEXP, SEXP nSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -55,13 +55,13 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_semiaftosmac4_center", (DL_FUNC) &_semiaftosmac4_center, 3},
-    {"_semiaftosmac4_km", (DL_FUNC) &_semiaftosmac4_km, 3},
-    {"_semiaftosmac4_gehan_smth", (DL_FUNC) &_semiaftosmac4_gehan_smth, 6},
+    {"_semiaftosmac_center", (DL_FUNC) &_semiaftosmac_center, 3},
+    {"_semiaftosmac_km", (DL_FUNC) &_semiaftosmac_km, 3},
+    {"_semiaftosmac_gehan_smth", (DL_FUNC) &_semiaftosmac_gehan_smth, 6},
     {NULL, NULL, 0}
 };
 
-RcppExport void R_init_semiaftosmac4(DllInfo *dll) {
+RcppExport void R_init_semiaftosmac(DllInfo *dll) {
     R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
     R_useDynamicSymbols(dll, FALSE);
 }
