@@ -74,12 +74,12 @@ library(semiaftosmac)
 # Load the full data
 data(lymp)
 x <- lymp$covariates
-y <- lymp$reponse
+y <- log(lymp$reponse)
 delta <- lymp$delta
 n <- nrow(x)
 
 # Get the subsample estimator using A-optimal SSPs when `r0 = 2000` and `r = 4000`.
-out <- semi_ls_fit(x, y, delta, r0 = 2000, r = 4000, ssp.type = "optA",
+out <- semi_ls_fit(x, y, delta, r0 = 3000, r = 5000, ssp.type = "optA",
                     method = "one", se = "TRUE", b = 100, alpha = 0.2)
 }
 \keyword{semi_ls_fit}

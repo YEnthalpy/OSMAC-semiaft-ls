@@ -43,15 +43,15 @@ library(semiaftosmac)
 # Load the full data
 data(lymp)
 x <- lymp$covariates
-y <- lymp$reponse
+y <- log(lymp$reponse)
 delta <- lymp$delta
 n <- nrow(x)
 
 # Sampling with replacement based on uniform subsampling method
-# Subsample size 2000
-ind <- sample(n, 2000, replace = TRUE)
+# Subsample size 3000
+ind <- sample(n, 3000, replace = TRUE)
 
 # Get the subsample estimator
-out <- semi_ls_est(x[ind, ], y[ind], delta, rep(1/n, 2000), n)
+out <- semi_ls_est(x[ind, ], y[ind], delta, rep(1/n, 3000), n)
 }
 \keyword{semi_ls_est}

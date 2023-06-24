@@ -113,7 +113,7 @@ semi_ls_ssp <- function(x, y, delta, r0, ssp_type, b, alpha) {
     mle_pt <- semi_ls_est(x_pt, y_pt, dt_pt, ssp_pt, n)
     if (mle_pt$converge != 0) {
       return(list(bt_pt = NA, ssp = NA, index.pilot = NA, 
-                  converge = c(3, mle_pt$converge)))
+                  converge = mle_pt$converge))
     }
     bt_pt <- mle_pt$coefficient
     g <- uls(x, y, delta, bt_pt, rep(1 / n, n), n, ind_pt)
@@ -136,6 +136,10 @@ semi_ls_fit <- function(x, y, delta, r0, r, ssp_type, method, se = TRUE, b = 20,
   n <- nrow(x)
   ssps <- semi_ls_ssp(x, y, delta, r0, ssp_type, b, alpha)
   pi <- ssps$ssp
+  if (ssps$converge != 0) {
+    stop(paste0("Fail to get a converging pilot estimator. The converging code is ", ssps$converge))
+  }
+  if (ssps$converge )
   if (method == "one") {
     ind_pt <- ssps$index.pilot
     ind_r <- sample(n, r, prob = pi, replace = TRUE)
@@ -143,7 +147,7 @@ semi_ls_fit <- function(x, y, delta, r0, r, ssp_type, method, se = TRUE, b = 20,
     sec_ssp <- c(pi[ind_r], rep(1 / n, r0))
     est <- semi_ls_est(x[ind, ], y[ind], delta[ind], sec_ssp, n)
     if (est$converge != 0) {
-      return(list(coefficient = NA, std = NA, converge = est$converge, ite = NA))
+      stop(paste0("Fail to get a converging second-step estimator. The converging code is ", est$converge))
     }
     coe <- as.vector(est$coefficient)
     ite <- est$ite
@@ -165,13 +169,9 @@ semi_ls_fit <- function(x, y, delta, r0, r, ssp_type, method, se = TRUE, b = 20,
     })
     conv <- sapply(out, function(i) {i$converge})
     if (sum(conv) != 0) {
-      return(list(
-        coe = NA, std = NA,
-        converge = rbind(
-          c(1, length(which(conv == 1))),
-          c(2, length(which(conv == 2)))
-        )
-      ))
+      stop(paste0("At least one second-step estimators do not converge. ",
+                  length(which(conv == 1)), "subsample estimators have the converging code 1. ",
+                  length(which(conv == 2)), "subsample estimators have the converging code 2."))
     }
     coe_itr <- sapply(out, function(t){t$coefficient})
     ite <- mean(sapply(out, function(t){t$ite}))

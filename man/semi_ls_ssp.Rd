@@ -49,12 +49,12 @@ library(semiaftosmac)
 # Load the full data
 data(lymp)
 x <- lymp$covariates
-y <- lymp$reponse
+y <- log(lymp$reponse)
 delta <- lymp$delta
 n <- nrow(x)
 
 # Get the optimal SSPs based on A-optimality
-ssps <- semi_ls_ssp(x, y, delta, r0 = 2000, 
+ssps <- semi_ls_ssp(x, y, delta, r0 = 3000, 
                     ssp.type = "optA", b = 100, alpha = 0.2)
 }
 \keyword{semi_ls_ssp}
