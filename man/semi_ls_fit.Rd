@@ -74,7 +74,7 @@ library(semiaftosmac)
 # Load the full data
 data(lymp)
 x <- lymp$covariates
-y <- log(lymp$reponse)
+y <- log(lymp$response)
 delta <- lymp$delta
 n <- nrow(x)
 
