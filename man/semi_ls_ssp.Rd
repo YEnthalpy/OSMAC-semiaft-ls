@@ -56,6 +56,6 @@ n <- nrow(x)
 # Get the optimal SSPs based on A-optimality
 set.seed(101)
 ssps <- semi_ls_ssp(x, y, delta, r0 = 3000, 
-                    ssp.type = "optA", b = 100, alpha = 0.2)
+                    ssp_type = "optA", b = 100, alpha = 0.2)
 }
 \keyword{semi_ls_ssp}

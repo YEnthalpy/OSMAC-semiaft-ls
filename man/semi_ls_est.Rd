@@ -53,6 +53,6 @@ set.seed(101)
 ind <- sample(n, 3000, replace = TRUE)
 
 # Get the subsample estimator
-out <- semi_ls_est(x[ind, ], y[ind], delta[ind], rep(1/n, 3000), n)
+semi_ls_est(x[ind, ], y[ind], delta[ind], rep(1/n, 3000), n)
 }
 \keyword{semi_ls_est}
