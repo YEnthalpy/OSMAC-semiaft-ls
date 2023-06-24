@@ -139,7 +139,6 @@ semi_ls_fit <- function(x, y, delta, r0, r, ssp_type, method, se = TRUE, b = 20,
   if (ssps$converge != 0) {
     stop(paste0("Fail to get a converging pilot estimator. The converging code is ", ssps$converge))
   }
-  if (ssps$converge )
   if (method == "one") {
     ind_pt <- ssps$index.pilot
     ind_r <- sample(n, r, prob = pi, replace = TRUE)
