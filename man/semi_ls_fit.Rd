@@ -79,6 +79,7 @@ delta <- lymp$delta
 n <- nrow(x)
 
 # Get the subsample estimator using A-optimal SSPs when `r0 = 2000` and `r = 4000`.
+set.seed(101)
 out <- semi_ls_fit(x, y, delta, r0 = 3000, r = 5000, ssp.type = "optA",
                     method = "one", se = "TRUE", b = 100, alpha = 0.2)
 }

@@ -49,9 +49,10 @@ n <- nrow(x)
 
 # Sampling with replacement based on uniform subsampling method
 # Subsample size 3000
+set.seed(101)
 ind <- sample(n, 3000, replace = TRUE)
 
 # Get the subsample estimator
-out <- semi_ls_est(x[ind, ], y[ind], delta, rep(1/n, 3000), n)
+out <- semi_ls_est(x[ind, ], y[ind], delta[ind], rep(1/n, 3000), n)
 }
 \keyword{semi_ls_est}

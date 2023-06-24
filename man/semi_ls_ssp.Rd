@@ -54,6 +54,7 @@ delta <- lymp$delta
 n <- nrow(x)
 
 # Get the optimal SSPs based on A-optimality
+set.seed(101)
 ssps <- semi_ls_ssp(x, y, delta, r0 = 3000, 
                     ssp.type = "optA", b = 100, alpha = 0.2)
 }
