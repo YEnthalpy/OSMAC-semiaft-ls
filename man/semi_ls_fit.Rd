@@ -12,8 +12,6 @@ semi_ls_fit(x, y, delta, r0, r, ssp_type, method,
 
 \item{delta}{the input censoring indicator.}
 
-\item{pi}{the subsampling probabilities.}
-
 \item{r0}{the input pilot subsample size.}
 
 \item{r}{the input second-step subsample size.}
