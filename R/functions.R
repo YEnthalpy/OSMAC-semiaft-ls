@@ -182,9 +182,9 @@ semi_ls_fit <- function(x, y, delta, r0, r, ssp_type, method, se = TRUE, b = 20,
     }
   }
   if (is.null(colnames(x))) {
-    colnames(coe) <- c("Intercept", paste0("Beta", seq(1, ncol(x)-1, 1)))
+    names(coe) <- c("Intercept", paste0("Beta", seq(1, ncol(x)-1, 1)))
   }else {
-    colnames(coe) <- colnames(x)
+    names(coe) <- colnames(x)
   }
   return(list(coefficient = coe, std = std, converge = 0, ite = ite))
 }
